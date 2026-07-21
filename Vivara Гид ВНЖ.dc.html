@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; font-family: 'Manrope', Arial, sans-serif; color: #2c323d; background: #ffffff; }
+  a { color: #2e7ce9; text-decoration: none; }
+  a:hover { color: #1c5fb4; }
+</style>
+</helmet>
+
+<div style="font-family: 'Manrope', Arial, sans-serif; color: #2c323d; background: #ffffff;">
+
+  <header style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.94); backdrop-filter: blur(10px); box-shadow: 0 5px 25px rgba(0,70,170,0.08);">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 0 24px; height: 76px; display: flex; align-items: center; gap: 20px;">
+      <a href="Vivara Лендинг.dc.html" style="font-size: 24px; font-weight: 800; color: #0f2e63; letter-spacing: 0.02em;">Vivara<span style="color: #2e7ce9;">.</span></a>
+      <a href="Vivara Лендинг.dc.html" style="margin-left: auto; font-size: 15px; font-weight: 600; color: #0f2e63;">← Вернуться на главную</a>
+    </div>
+  </header>
+
+  <section style="background: linear-gradient(180deg, #f4f8ff 0%, #ffffff 100%);">
+    <div style="max-width: 820px; margin: 0 auto; padding: 56px 24px 40px; text-align: center;">
+      <h1 style="margin: 0; font-size: 40px; font-weight: 800; color: #0f2e63; line-height: 1.3;"><span style="display: inline-block; background: rgba(147,171,216,0.85); padding: 1px 22px 5px; clip-path: polygon(2% 5%, 16% 0%, 34% 4%, 52% 0%, 70% 4%, 87% 0%, 98% 5%, 100% 18%, 98% 35%, 100% 50%, 98% 65%, 100% 82%, 98% 95%, 87% 100%, 70% 96%, 52% 100%, 34% 96%, 16% 100%, 2% 95%, 0% 82%, 2% 65%, 0% 50%, 2% 35%, 0% 18%); color: #faf4cd;">ВНЖ цифрового кочевника</span> — что нужно знать</h1>
+      <p style="margin: 16px 0 0; font-size: 17px; line-height: 1.6; color: #5a6474;">Собрали ответы на вопросы, которые чаще всего задают до консультации: кто подходит, какие требования, как проходит подача, что с налогами и рисками отказа.</p>
+    </div>
+  </section>
+
+  <section style="background: #ffffff;">
+    <div style="max-width: 860px; margin: 0 auto; padding: 0 24px 30px;">
+      <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="6">
+          <button onClick="{{ t.select }}" style="border: none; border-radius: 100px; padding: 10px 20px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit;" dc-props="{{ t.style }}">{{ t.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: #f4f8ff;">
+    <div style="max-width: 860px; margin: 0 auto; padding: 30px 24px 72px;">
+      <h2 style="margin: 0 0 20px; font-size: 26px; font-weight: 800; color: #0f2e63;">{{ activeLabel }}</h2>
+      <div style="display: grid; gap: 12px;">
+        <sc-for list="{{ items }}" as="q" hint-placeholder-count="4">
+          <div style="background: #ffffff; border-radius: 14px; overflow: hidden; box-shadow: 0 6px 18px rgba(0,70,170,0.05);">
+            <button onClick="{{ q.toggle }}" style="width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 16px; background: none; border: none; padding: 20px 24px; cursor: pointer; text-align: left; font-family: inherit; font-size: 17px; font-weight: 700; color: #0f2e63;">{{ q.question }}<span style="color: #2e7ce9; font-size: 20px; font-weight: 500; flex-shrink: 0;">{{ q.icon }}</span></button>
+            <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+              <div style="padding: 0 24px 22px; font-size: 15px; line-height: 1.7; color: #4a5364;">{{ q.answer }}</div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: linear-gradient(135deg, #0f2e63 0%, #1c5fb4 100%);">
+    <div style="max-width: 780px; margin: 0 auto; padding: 64px 24px; text-align: center;">
+      <h2 style="margin: 0; font-size: 32px; font-weight: 800; color: #ffffff;">Остались вопросы по вашей ситуации?</h2>
+      <p style="margin: 14px 0 0; font-size: 16px; color: rgba(255,255,255,0.85);">Разберём именно ваш случай — честно и без общих формулировок.</p>
+      <button onClick="{{ openModal }}" style="display: inline-flex; margin-top: 28px; align-items: center; justify-content: center; height: 62px; padding: 0 38px; border-radius: 12px; background: #ffffff; color: #0f2e63; font-size: 18px; font-weight: 700; border: none; cursor: pointer; font-family: inherit;" style-hover="background: #eaf2ff; color: #0f2e63;">Записаться на консультацию</button>
+    </div>
+  </section>
+
+  <footer style="background: #0b2249;">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 36px 24px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;">
+      <div style="font-size: 20px; font-weight: 800; color: #ffffff;">Vivara<span style="color: #61a1ff;">.</span></div>
+      <div style="font-size: 14px; color: rgba(255,255,255,0.6);">Vivara — ВНЖ, релокация и адаптация в Испании и ОАЭ без бюрократического стресса</div>
+    </div>
+  </footer>
+
+
+  <sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position: fixed; inset: 0; background: rgba(15,46,99,0.55); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 20px; transition: opacity 0.4s ease;" onClick="{{ closeModal }}">
+      <div style="background: #ffffff; border-radius: 20px; max-width: 460px; width: 100%; padding: 40px 36px; position: relative; box-shadow: 0 30px 70px rgba(15,46,99,0.30); {{ modalWrapStyle }}" onClick="{{ stopClick }}">
+        <button onClick="{{ closeModal }}" style="position: absolute; top: 16px; right: 16px; width: 34px; height: 34px; border-radius: 50%; border: none; background: #f4f8ff; color: #5a6474; font-size: 20px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; font-family: inherit;" style-hover="background: #eaf2ff; color: #0f2e63;">×</button>
+        <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align: center; padding: 20px 4px;">
+            <h4 style="font-size: 22px; font-weight: 800; color: #0f2e63; margin: 0 0 10px;">Заявка отправлена</h4>
+            <p style="color: #5a6474; font-size: 15px; line-height: 1.6;">Спасибо! Перезвоним в течение 24 часов, чтобы разобрать вашу ситуацию.</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+          <div>
+            <h4 style="font-size: 22px; font-weight: 800; color: #0f2e63; line-height: 1.35; margin: 0 0 8px;">Получите бесплатную консультацию по ВНЖ</h4>
+            <p style="color: #5a6474; font-size: 15px; line-height: 1.55; margin-bottom: 24px;">Специалист перезвонит в течение 24 часов, оценит вашу ситуацию и ответит на вопросы.</p>
+            <div style="margin-bottom: 14px;">
+              <input type="text" placeholder="Имя" value="{{ name }}" onChange="{{ setName }}" style="width: 100%; box-sizing: border-box; border: 1px solid #d7e3fa; background: #f4f8ff; padding: 13px 16px; font-size: 15px; color: #2c323d; border-radius: 12px; font-family: inherit;">
+            </div>
+            <div style="margin-bottom: 18px;">
+              <input type="tel" placeholder="Телефон*" value="{{ phone }}" onChange="{{ setPhone }}" style="width: 100%; box-sizing: border-box; border: 1px solid #d7e3fa; background: #f4f8ff; padding: 13px 16px; font-size: 15px; color: #2c323d; border-radius: 12px; font-family: inherit;">
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+              <div style="font-family: monospace; font-size: 16px; letter-spacing: 0.25em; background: #f4f8ff; border: 1px dashed #b7c8e8; padding: 11px 16px; border-radius: 12px; color: #0f2e63; user-select: none;">{{ captchaCode }}</div>
+              <button onClick="{{ refreshCaptcha }}" style="border: 1px solid #d7e3fa; background: #ffffff; border-radius: 12px; width: 40px; height: 40px; cursor: pointer; font-size: 16px; color: #5a6474; font-family: inherit;" style-hover="color: #0f2e63;">⟳</button>
+              <input type="text" placeholder="Код с картинки" value="{{ captchaInput }}" onChange="{{ setCaptchaInput }}" style="flex: 1; min-width: 0; box-sizing: border-box; border: 1px solid #d7e3fa; background: #f4f8ff; padding: 13px 16px; font-size: 15px; color: #2c323d; border-radius: 12px; font-family: inherit;">
+            </div>
+            <label style="display: flex; gap: 10px; align-items: flex-start; margin-bottom: 20px; cursor: pointer;">
+              <input type="checkbox" checked="{{ consent }}" onChange="{{ toggleConsent }}" style="margin-top: 3px;">
+              <span style="font-size: 13px; color: #5a6474; line-height: 1.5;">Я согласен(-на) с условиями обработки персональных данных</span>
+            </label>
+            <sc-if value="{{ formError }}" hint-placeholder-val="{{ false }}">
+              <p style="color: #d64545; font-size: 13px; margin-bottom: 14px;">{{ formError }}</p>
+            </sc-if>
+            <button onClick="{{ handleSubmit }}" style="width: 100%; display: flex; align-items: center; justify-content: center; height: 56px; border-radius: 12px; color: #ffffff; font-size: 17px; font-weight: 700; background: linear-gradient(180deg, #4d90f5 0%, #2e7ce9 60%, #2268cc 100%); border: none; cursor: pointer; font-family: inherit;" style-hover="filter: brightness(0.96);">Отправить</button>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const GUIDE_DATA = [
+  {
+    label: 'Подходит ли вам',
+    items: [
+      { question: 'Кому подходит ВНЖ цифрового кочевника?', answer: 'Тем, кто работает полностью удалённо на зарубежные компании или клиентов и получает доход не из страны переезда — фрилансерам, наёмным сотрудникам и владельцам бизнеса. Важна не профессия, а то, что работу можно вести дистанционно.' },
+      { question: 'Подходит ли эта виза не-айтишникам?', answer: 'Да. Маркетологи, дизайнеры, консультанты, преподаватели и предприниматели подходят так же, как разработчики — если их работа реально может выполняться онлайн.' },
+      { question: 'В чём разница между фрилансером, наёмным сотрудником и владельцем бизнеса?', answer: 'Это три разных статуса с разными требованиями к документам, соцстраху и подтверждению дохода. Мы определяем, какой статус подходит вам, ещё на первичном разборе — это влияет на весь дальнейший процесс.' },
+      { question: 'Можно ли подать документы, уже находясь в стране?', answer: 'Да, если вы въехали легально — по туристической визе, безвизу или ВНЖ другой страны ЕС. Это обычно быстрее и дешевле, чем подача через консульство.' },
+      { question: 'Можно ли подаваться с семьёй?', answer: 'Да — супруг(а)/партнёр и дети, а в части случаев родители. Для семьи действует повышенный порог дохода и отдельный набор документов, подтверждающих родство и зависимость.' },
+    ],
+  },
+  {
+    label: 'Документы и доход',
+    items: [
+      { question: 'Какой минимальный доход нужен?', answer: 'Порог дохода привязан к минимальной зарплате в стране и растёт при подаче с семьёй. Считаем точную сумму под вашу валюту и состав семьи на консультации.' },
+      { question: 'Нужен ли диплом?', answer: 'Достаточно одного из двух: профильного образования (диплом, апостилированный и переведённый) или подтверждённого опыта работы по специальности за последние несколько лет, без длительных перерывов.' },
+      { question: 'Подходит ли доход в криптовалюте?', answer: 'Нет — на сегодня нет надёжного механизма подтвердить такой доход перед миграционными органами. Нужен доход, который можно показать банковской выпиской и договором.' },
+      { question: 'Как вообще подтверждается доход?', answer: 'Логичной цепочкой документов: договор → счета/зарплатные листы → банковская выписка. Если суммы и назначения платежей расходятся между документами, это главный источник отказов — поэтому мы проверяем цепочку заранее.' },
+      { question: 'Нужна ли аренда жилья для подачи?', answer: 'Нет, для самой подачи достаточно адреса временного пребывания. Про постоянное жильё говорим отдельно, когда разбираем вашу ситуацию.' },
+    ],
+  },
+  {
+    label: 'Подача и сроки',
+    items: [
+      { question: 'Через консульство или из страны переезда — что лучше?', answer: 'Подача изнутри страны обычно быстрее, дешевле и полностью онлайн — без оригиналов документов. Через консульство процесс длиннее и требует больше подготовки, но иногда это единственный доступный вариант. Маршрут подбираем под вашу ситуацию.' },
+      { question: 'Сколько занимает весь процесс?', answer: 'Сбор документов — от пары недель до полутора месяцев, само рассмотрение — обычно в пределах месяца. В сумме реалистичный ориентир — от 2 до 4 месяцев в зависимости от готовности документов.' },
+      { question: 'Нужно ли находиться в стране на момент подачи?', answer: 'Если подаёте изнутри страны — да, это обязательное условие. При подаче через консульство вы подаётесь у себя и въезжаете уже с готовой визой.' },
+      { question: 'Что если моя ситуация изменится после получения ВНЖ?', answer: 'Смена работы, клиента или формата дохода — обычная история. Мы сопровождаем и после получения ВНЖ, помогая пройти нужные шаги без потери статуса.' },
+    ],
+  },
+  {
+    label: 'Соцстрах и медстраховка',
+    items: [
+      { question: 'Нужно ли вставать на учёт в соцстрахе?', answer: 'Требования различаются по статусу: у фрилансеров это обязательное условие после одобрения, у наёмных сотрудников — чаще нужен документ о сохранении соцстраха своей страны. Разбираем это индивидуально.' },
+      { question: 'Нужна ли медицинская страховка?', answer: 'В части случаев — да, обязательна частная медстраховка на период, пока вы не подключены к местной системе. Точные условия зависят от вашего статуса.' },
+      { question: 'Нужно ли открывать местный счёт?', answer: 'Обычно да — не на этапе подачи, а после одобрения, для постановки на учёт. Даём пошаговую инструкцию и, при необходимости, помогаем с сопровождением.' },
+    ],
+  },
+  {
+    label: 'Налоги и жизнь после переезда',
+    items: [
+      { question: 'Правда ли, что меньше 183 дней в стране — и налоги платить не нужно?', answer: 'Нет, это распространённое заблуждение. Правило 183 дней — лишь один из критериев налогового резидентства, и не всегда решающий. Точную картину даёт разбор именно вашей ситуации с профильным специалистом.' },
+      { question: 'Как платятся налоги на практике?', answer: 'Зависит от статуса: у наёмных сотрудников — обычно одна годовая декларация, у фрилансеров — ежеквартальные авансовые платежи плюс годовой перерасчёт. Мы не заменяем налоговых консультантов, но объясняем базовую логику и сроки.' },
+      { question: 'Что важно на этапе продления ВНЖ?', answer: 'Подтвердить, что вы продолжаете соответствовать условиям: сохраняете формат удалённой работы, нужный уровень дохода и вовремя платите налоги и взносы.' },
+      { question: 'Сколько стоит жизнь после переезда?', answer: 'Сильно зависит от города и образа жизни — от аренды и еды до страховки. На консультации ориентируем по бюджету под конкретный регион, который вы рассматриваете.' },
+    ],
+  },
+  {
+    label: 'Ошибки и риски',
+    items: [
+      { question: 'Какие ошибки чаще всего приводят к отказу?', answer: 'Несовпадение сумм между договором и выпиской, неподтверждённый статус деятельности, формально «пустая» компания без реальных оборотов, пропущенные сроки регистрации. Практически все они выявляются заранее, если разобрать кейс до подачи.' },
+      { question: 'Проверяют ли реальность моей деятельности или компании?', answer: 'Да — миграционные органы смотрят не только на документы, но и на суть: реальна ли работа, деятельность компании, соответствует ли роль формату удалённой работы. Мы оцениваем это заранее и говорим прямо, если видим риск.' },
+      { question: 'Что если мой кейс выглядит рискованным?', answer: 'Мы скажем об этом до начала процесса, а не после отказа — и предложим, что можно скорректировать или какой альтернативный формат подойдёт лучше.' },
+    ],
+  },
+];
+
+function makeCaptcha() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let out = '';
+  for (let i = 0; i < 6; i++) out += chars[Math.floor(Math.random() * chars.length)];
+  return out;
+}
+
+class Component extends DCLogic {
+  state = {
+    tab: 0, open: 0,
+    modalOpen: false,
+    submitted: false,
+    name: '',
+    phone: '',
+    captchaCode: makeCaptcha(),
+    captchaInput: '',
+    consent: false,
+    formError: '',
+  };
+
+  openModal = () => this.setState({ modalOpen: true, submitted: false, formError: '', closing: false });
+  closeModal = () => this.setState({ modalOpen: false });
+  stopClick = (e) => e.stopPropagation();
+  setName = (e) => this.setState({ name: e.target.value });
+  setPhone = (e) => {
+    let d = e.target.value.replace(/\D/g, '');
+    if (d.startsWith('8')) d = '7' + d.slice(1);
+    if (d && !d.startsWith('7')) d = '7' + d;
+    d = d.slice(0, 11);
+    let out = '';
+    if (d.length > 0) out = '+7';
+    if (d.length > 1) out += ' (' + d.slice(1, 4);
+    if (d.length >= 4) out += ')';
+    if (d.length > 4) out += ' ' + d.slice(4, 7);
+    if (d.length > 7) out += '-' + d.slice(7, 9);
+    if (d.length > 9) out += '-' + d.slice(9, 11);
+    this.setState({ phone: out });
+  };
+  setCaptchaInput = (e) => this.setState({ captchaInput: e.target.value });
+  refreshCaptcha = () => this.setState({ captchaCode: makeCaptcha(), captchaInput: '' });
+  toggleConsent = () => this.setState(s => ({ consent: !s.consent }));
+  handleSubmit = () => {
+    if (!this.state.phone || this.state.phone.replace(/\D/g, '').length < 11) { this.setState({ formError: 'Укажите корректный телефон' }); return; }
+    if (this.state.captchaInput.trim().toUpperCase() !== this.state.captchaCode) { this.setState({ formError: 'Код с картинки введён неверно', captchaCode: makeCaptcha(), captchaInput: '' }); return; }
+    if (!this.state.consent) { this.setState({ formError: 'Нужно согласие на обработку данных' }); return; }
+    import('./vivara-storage.js').then(({ saveSubmission }) => saveSubmission({ type: 'consultation', name: this.state.name, phone: this.state.phone }));
+    this.setState({ submitted: true, formError: '' });
+    clearTimeout(this._closeTimer);
+    this._closeTimer = setTimeout(() => this.setState({ modalOpen: false, closing: false }), 5000);
+    setTimeout(() => this.setState({ closing: true }), 4400);
+  };
+
+  renderVals() {
+    return {
+      modalOpen: this.state.modalOpen,
+      modalWrapStyle: 'transition: opacity 0.5s ease, transform 0.5s ease; opacity: ' + (this.state.closing ? '0' : '1') + '; transform: scale(' + (this.state.closing ? '0.94' : '1') + ');',
+      openModal: this.openModal,
+      closeModal: this.closeModal,
+      stopClick: this.stopClick,
+      submitted: this.state.submitted,
+      notSubmitted: !this.state.submitted,
+      name: this.state.name,
+      setName: this.setName,
+      phone: this.state.phone,
+      setPhone: this.setPhone,
+      captchaCode: this.state.captchaCode,
+      captchaInput: this.state.captchaInput,
+      setCaptchaInput: this.setCaptchaInput,
+      refreshCaptcha: this.refreshCaptcha,
+      consent: this.state.consent,
+      toggleConsent: this.toggleConsent,
+      formError: this.state.formError,
+      handleSubmit: this.handleSubmit,
+      tabs: GUIDE_DATA.map((t, i) => ({
+        label: t.label,
+        select: () => this.setState({ tab: i, open: 0 }),
+        style: i === this.state.tab
+          ? { background: '#2e7ce9', color: '#ffffff' }
+          : { background: '#f4f8ff', color: '#0f2e63' },
+      })),
+      activeLabel: GUIDE_DATA[this.state.tab].label,
+      items: GUIDE_DATA[this.state.tab].items.map((it, i) => ({
+        ...it,
+        open: this.state.open === i,
+        icon: this.state.open === i ? '−' : '+',
+        toggle: () => this.setState(s => ({ open: s.open === i ? -1 : i })),
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>

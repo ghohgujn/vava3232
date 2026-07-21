@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; font-family: 'Manrope', Arial, sans-serif; color: #2c323d; background: #ffffff; }
+  a { color: #2e7ce9; text-decoration: none; }
+  a:hover { color: #1c5fb4; }
+  .vf-input, .vf-select { width: 100%; box-sizing: border-box; border: 1px solid #d7e3fa; background: #f4f8ff; padding: 13px 16px; font-size: 15px; color: #2c323d; border-radius: 12px; font-family: inherit; }
+  .vf-label { font-size: 14px; font-weight: 700; color: #0f2e63; margin-bottom: 8px; display: block; }
+</style>
+</helmet>
+
+<div style="font-family: 'Manrope', Arial, sans-serif; color: #2c323d; background: #ffffff;">
+
+  <header style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.94); backdrop-filter: blur(10px); box-shadow: 0 5px 25px rgba(0,70,170,0.08);">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 0 24px; height: 76px; display: flex; align-items: center; gap: 20px;">
+      <a href="Vivara Лендинг.dc.html" style="font-size: 24px; font-weight: 800; color: #0f2e63; letter-spacing: 0.02em;">Vivara<span style="color: #2e7ce9;">.</span></a>
+      <a href="Vivara Лендинг.dc.html" style="margin-left: auto; font-size: 15px; font-weight: 600; color: #0f2e63;">← Вернуться на главную</a>
+    </div>
+  </header>
+
+  <section style="background: linear-gradient(180deg, #f4f8ff 0%, #ffffff 100%);">
+    <div style="max-width: 720px; margin: 0 auto; padding: 56px 24px 40px; text-align: center;">
+      <h1 style="margin: 0; font-size: 38px; font-weight: 800; color: #0f2e63; line-height: 1.3;">Анкета <span style="display: inline-block; background: rgba(147,171,216,0.85); padding: 1px 22px 5px; clip-path: polygon(2% 5%, 16% 0%, 34% 4%, 52% 0%, 70% 4%, 87% 0%, 98% 5%, 100% 18%, 98% 35%, 100% 50%, 98% 65%, 100% 82%, 98% 95%, 87% 100%, 70% 96%, 52% 100%, 34% 96%, 16% 100%, 2% 95%, 0% 82%, 2% 65%, 0% 50%, 2% 35%, 0% 18%); color: #faf4cd;">Digital Nomad</span></h1>
+      <p style="margin: 16px 0 0; font-size: 16px; line-height: 1.6; color: #5a6474;">Заполните анкету — это поможет предварительно оценить вашу ситуацию и подготовить предметную консультацию. Занимает 3–5 минут.</p>
+    </div>
+  </section>
+
+  <section style="background: #ffffff;">
+    <div style="max-width: 640px; margin: 0 auto; padding: 20px 24px 80px; min-height: 600px;">
+      <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+        <div style="background: #f4f8ff; border-radius: 16px; padding: 48px 32px; text-align: center;">
+          <div style="font-size: 22px; font-weight: 800; color: #0f2e63;">Анкета отправлена</div>
+          <p style="margin: 14px 0 0; font-size: 15px; color: #5a6474; line-height: 1.6;">Спасибо! Мы изучим ответы и свяжемся с вами для предметной консультации в течение 24 часов.</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+      <div style="display: grid; gap: 28px;">
+
+        <div style="display: grid; gap: 14px;">
+          <div style="font-size: 18px; font-weight: 800; color: #0f2e63; border-bottom: 2px solid #f4f8ff; padding-bottom: 10px;">Контактные данные</div>
+          <div><label class="vf-label">Ваше имя</label><input class="vf-input" placeholder="Введите ваше имя" value="{{ name }}" onChange="{{ setName }}"></div>
+          <div><label class="vf-label">Удобный способ связи</label>
+            <select class="vf-select" value="{{ contactWay }}" onChange="{{ setContactWay }}">
+              <option value="">Выберите способ</option>
+              <option value="whatsapp">WhatsApp</option>
+              <option value="telegram">Telegram</option>
+            </select>
+          </div>
+          <div><label class="vf-label">Контакт (номер или логин)</label><input class="vf-input" placeholder="Телефон или @username" value="{{ contact }}" onChange="{{ setContact }}"></div>
+          <div><label class="vf-label">Ваше гражданство</label><input class="vf-input" value="{{ citizenship }}" onChange="{{ setCitizenship }}"></div>
+        </div>
+
+        <div style="display: grid; gap: 14px;">
+          <div style="font-size: 18px; font-weight: 800; color: #0f2e63; border-bottom: 2px solid #f4f8ff; padding-bottom: 10px;">Состав семьи</div>
+          <div><label class="vf-label">Планируете переезд с семьёй?</label>
+            <select class="vf-select" value="{{ withFamily }}" onChange="{{ setWithFamily }}">
+              <option value="">Выберите вариант</option>
+              <option value="no">Нет</option>
+              <option value="yes">Да</option>
+            </select>
+          </div>
+          <sc-if value="{{ withFamilyYes }}" hint-placeholder-val="{{ false }}">
+            <div><label class="vf-label">Кто едет с вами?</label><input class="vf-input" placeholder="Например: супруг(а), двое детей" value="{{ familyMembers }}" onChange="{{ setFamilyMembers }}"></div>
+          </sc-if>
+        </div>
+
+        <div style="display: grid; gap: 14px;">
+          <div style="font-size: 18px; font-weight: 800; color: #0f2e63; border-bottom: 2px solid #f4f8ff; padding-bottom: 10px;">Формат подачи</div>
+          <div><label class="vf-label">Вас интересует подача</label>
+            <select class="vf-select" value="{{ filingType }}" onChange="{{ setFilingType }}">
+              <option value="">Выберите вариант</option>
+              <option value="from_country">Изнутри страны</option>
+              <option value="consulate">Через консульство</option>
+              <option value="not_sure">Пока не решил(а)</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: grid; gap: 14px;">
+          <div style="font-size: 18px; font-weight: 800; color: #0f2e63; border-bottom: 2px solid #f4f8ff; padding-bottom: 10px;">Работа и доход</div>
+          <div><label class="vf-label">Ваш формат работы</label>
+            <select class="vf-select" value="{{ workFormat }}" onChange="{{ setWorkFormat }}">
+              <option value="">Выберите вариант</option>
+              <option value="freelance">ИП / Самозанятый</option>
+              <option value="employee">Работник по найму</option>
+              <option value="owner">Владелец бизнеса</option>
+            </select>
+          </div>
+          <div><label class="vf-label">Чем занимаетесь по контракту (кратко)</label><input class="vf-input" placeholder="Ваша должность и/или функции" value="{{ role }}" onChange="{{ setRole }}"></div>
+          <div><label class="vf-label">Страна регистрации работодателя / клиентов</label><input class="vf-input" value="{{ companyCountry }}" onChange="{{ setCompanyCountry }}"></div>
+          <div><label class="vf-label">Ваш ежемесячный доход</label><input class="vf-input" placeholder="Сумма в валюте, в которой получаете доход" value="{{ income }}" onChange="{{ setIncome }}"></div>
+          <div><label class="vf-label">Можете подтвердить доход банковскими выписками?</label>
+            <select class="vf-select" value="{{ incomeProof }}" onChange="{{ setIncomeProof }}">
+              <option value="">Выберите вариант</option>
+              <option value="yes">Да</option>
+              <option value="no">Нет</option>
+              <option value="indirect">Да, но получаю не напрямую</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: grid; gap: 14px;">
+          <div style="font-size: 18px; font-weight: 800; color: #0f2e63; border-bottom: 2px solid #f4f8ff; padding-bottom: 10px;">Образование и опыт</div>
+          <div><label class="vf-label">Есть ли у вас высшее образование?</label>
+            <select class="vf-select" value="{{ education }}" onChange="{{ setEducation }}">
+              <option value="">Выберите вариант</option>
+              <option value="match">Да, специальность соответствует деятельности</option>
+              <option value="no_match">Да, но не соответствует деятельности</option>
+              <option value="experience">Нет, но есть подтверждённый опыт</option>
+              <option value="none">Нет ни опыта, ни диплома</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: grid; gap: 14px;">
+          <div style="font-size: 18px; font-weight: 800; color: #0f2e63; border-bottom: 2px solid #f4f8ff; padding-bottom: 10px;">Дополнительно</div>
+          <div><label class="vf-label">Опишите кратко ситуацию и цели переезда</label><input class="vf-input" value="{{ situation }}" onChange="{{ setSituation }}"></div>
+          <div><label class="vf-label">Какие вопросы беспокоят больше всего?</label><input class="vf-input" value="{{ concerns }}" onChange="{{ setConcerns }}"></div>
+        </div>
+
+        <label style="display: flex; gap: 10px; align-items: flex-start; cursor: pointer;">
+          <input type="checkbox" checked="{{ consent }}" onChange="{{ toggleConsent }}" style="margin-top: 3px;">
+          <span style="font-size: 13px; color: #5a6474; line-height: 1.5;">Я даю согласие на обработку персональных данных и принимаю политику конфиденциальности</span>
+        </label>
+
+        <sc-if value="{{ formError }}" hint-placeholder-val="{{ false }}">
+          <p style="color: #d64545; font-size: 14px; margin: 0;">{{ formError }}</p>
+        </sc-if>
+
+        <button onClick="{{ handleSubmit }}" style="border: none; border-radius: 12px; padding: 18px 32px; font-size: 17px; font-weight: 700; color: #ffffff; background: linear-gradient(180deg, #4d90f5 0%, #2e7ce9 60%, #2268cc 100%); cursor: pointer; font-family: inherit;">Отправить анкету</button>
+      </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <footer style="background: #0b2249;">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 36px 24px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;">
+      <div style="font-size: 20px; font-weight: 800; color: #ffffff;">Vivara<span style="color: #61a1ff;">.</span></div>
+      <div style="font-size: 14px; color: rgba(255,255,255,0.6);">Vivara — ВНЖ, релокация и адаптация в Испании и ОАЭ без бюрократического стресса</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    name: '', contactWay: '', contact: '', citizenship: '',
+    withFamily: '', familyMembers: '',
+    filingType: '',
+    workFormat: '', role: '', companyCountry: '', income: '', incomeProof: '',
+    education: '',
+    situation: '', concerns: '',
+    consent: false,
+    submitted: false,
+    formError: '',
+  };
+
+  mk = (key) => (e) => this.setState({ [key]: e.target.value });
+  toggleConsent = () => this.setState(s => ({ consent: !s.consent }));
+
+  handleSubmit = () => {
+    if (!this.state.name.trim()) { this.setState({ formError: 'Укажите имя' }); return; }
+    if (!this.state.contact.trim()) { this.setState({ formError: 'Укажите контакт для связи' }); return; }
+    if (!this.state.consent) { this.setState({ formError: 'Нужно согласие на обработку данных' }); return; }
+    import('./vivara-storage.js').then(({ saveSubmission }) => saveSubmission({
+      type: 'digital_nomad', name: this.state.name, contact: this.state.contact, contactWay: this.state.contactWay,
+      citizenship: this.state.citizenship, withFamily: this.state.withFamily, familyMembers: this.state.familyMembers,
+      filingType: this.state.filingType, workFormat: this.state.workFormat, role: this.state.role,
+      companyCountry: this.state.companyCountry, income: this.state.income, incomeProof: this.state.incomeProof,
+      education: this.state.education, situation: this.state.situation, concerns: this.state.concerns,
+    }));
+    this.setState({ submitted: true, formError: '' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => { window.location.href = 'Vivara Лендинг.dc.html'; }, 2000);
+  };
+
+  renderVals() {
+    return {
+      name: this.state.name, setName: this.mk('name'),
+      contactWay: this.state.contactWay, setContactWay: this.mk('contactWay'),
+      contact: this.state.contact, setContact: this.mk('contact'),
+      citizenship: this.state.citizenship, setCitizenship: this.mk('citizenship'),
+      withFamily: this.state.withFamily, setWithFamily: this.mk('withFamily'),
+      withFamilyYes: this.state.withFamily === 'yes',
+      familyMembers: this.state.familyMembers, setFamilyMembers: this.mk('familyMembers'),
+      filingType: this.state.filingType, setFilingType: this.mk('filingType'),
+      workFormat: this.state.workFormat, setWorkFormat: this.mk('workFormat'),
+      role: this.state.role, setRole: this.mk('role'),
+      companyCountry: this.state.companyCountry, setCompanyCountry: this.mk('companyCountry'),
+      income: this.state.income, setIncome: this.mk('income'),
+      incomeProof: this.state.incomeProof, setIncomeProof: this.mk('incomeProof'),
+      education: this.state.education, setEducation: this.mk('education'),
+      situation: this.state.situation, setSituation: this.mk('situation'),
+      concerns: this.state.concerns, setConcerns: this.mk('concerns'),
+      consent: this.state.consent, toggleConsent: this.toggleConsent,
+      formError: this.state.formError,
+      submitted: this.state.submitted,
+      notSubmitted: !this.state.submitted,
+      handleSubmit: this.handleSubmit,
+    };
+  }
+}
+</script>
+</body>
+</html>
