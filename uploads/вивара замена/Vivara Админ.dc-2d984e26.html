@@ -146,7 +146,6 @@
 <script type="text/x-dc" data-dc-script>
 const FIELD_LABELS = {
   name: 'Имя', phone: 'Телефон', contact: 'Контакт', contactWay: 'Способ связи', email: 'Email',
-  source: 'Интересует',
   citizenship: 'Гражданство', otherCitizenship: 'Другое гражданство/ВНЖ', livingPlace: 'Проживает',
   age: 'Возраст', passportValid: 'Загранпаспорт', shengen: 'Шенген',
   withFamily: 'С семьёй', familyMembers: 'Состав семьи', familyCount: 'Кол-во членов семьи',
@@ -228,8 +227,7 @@ class Component extends DCLogic {
         initial: (p.name || '?').trim().charAt(0).toUpperCase() || '?',
         name: p.name,
         contactLine: [p.phone, p.email].filter(Boolean).join(' · '),
-        badges: uniqueTypes.map((t) => ({ label: (TYPE_META[t] || { label: t }).label, style: { background: (TYPE_META[t] || {}).bg || '#eee', color: (TYPE_META[t] || {}).color || '#555' } }))
-          .concat([...new Set(p.items.map((i) => i.source).filter(Boolean))].map((s) => ({ label: s, style: { background: '#fff3e0', color: '#b95d0e' } }))),
+        badges: uniqueTypes.map((t) => ({ label: (TYPE_META[t] || { label: t }).label, style: { background: (TYPE_META[t] || {}).bg || '#eee', color: (TYPE_META[t] || {}).color || '#555' } })),
         lastAtUtc: fmtUtc(p.lastAt),
         lastAtRaw: p.lastAt,
         open: !!this.state.open[p.id],
