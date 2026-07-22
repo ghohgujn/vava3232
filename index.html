@@ -33,6 +33,7 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Unbounded:wght@600;700&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
 <style>
   html { scroll-behavior: smooth; }
   body { margin: 0; font-family: 'Manrope', Arial, sans-serif; color: #2c323d; background: #ffffff; }
@@ -93,7 +94,7 @@
       </nav>
       <div class="vv-social-header" style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
         <a href="https://t.me/vivaracompany" target="_blank" rel="noopener" style="display: flex;" style-hover="filter: brightness(1.12);"><img src="tg.png" alt="Telegram" style="width: 28px; height: 28px; display: block; border-radius: 50%;"></a>
-        <a href="https://www.instagram.com/thevivara.company/" target="_blank" rel="noopener" style="display: flex;" style-hover="filter: brightness(1.12);"><img src="instagram.png" alt="Instagram" style="width: 28px; height: 28px; display: block; border-radius: 8px;"></a>
+        <a href="https://www.instagram.com/thevivara.company/" target="_blank" rel="noopener" style="display: flex;" style-hover="filter: brightness(1.12);"><img src="pasted-1784734268674-0.png" alt="Instagram" style="width: 28px; height: 28px; display: block; border-radius: 8px;"></a>
         </div>
       <button class="vv-cta-desktop" onClick="{{ openModal }}" style="margin-left: auto; display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 24px; border-radius: 8px; color: #ffffff; font-size: 15px; font-weight: 600; background: linear-gradient(180deg, #61a1ff 0%, #2e7ce9 50%, #1c5fb4 100%); border: none; cursor: pointer; font-family: inherit; flex-shrink: 0;" style-hover="filter: brightness(0.94); color: #ffffff;">Консультация</button>
       <button class="vv-hamburger" onClick="{{ toggleMobileMenu }}" style="margin-left: auto; width: 42px; height: 42px; border-radius: 8px; border: 1px solid #d7e3fa; background: #ffffff; align-items: center; justify-content: center; font-size: 20px; color: #0f2e63; cursor: pointer; flex-shrink: 0;" aria-label="Меню">{{ mobileMenuIcon }}</button>
@@ -116,7 +117,7 @@
 
   <!-- Hero -->
   <section style="background: linear-gradient(180deg, #f4f8ff 0%, #ffffff 100%); position: relative; overflow: visible;">
-    <img src="images/hero.png" alt="Vivara — оформление ВНЖ Испании и резидентства ОАЭ" class="vv-hero-img" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 88%; max-width: 1100px; opacity: 0.35; filter: hue-rotate(15deg) saturate(0.7); pointer-events: none; user-select: none;">
+    <img src="uploads/pasted-1784658415969-0.png" alt="Vivara — оформление ВНЖ Испании и резидентства ОАЭ" class="vv-hero-img" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 88%; max-width: 1100px; opacity: 0.35; filter: hue-rotate(15deg) saturate(0.7); pointer-events: none; user-select: none;">
     <div style="position: relative; z-index: 2; max-width: 820px; margin: 0 auto; padding: 40px 20px 56px; display: flex; flex-direction: column; align-items: center; text-align: center;">
         <h1 style="margin: 0; font-size: clamp(30px, 6vw, 52px); line-height: 1.3; font-weight: 800; color: #0f2e63; text-wrap: balance;">Нас выбирают, когда нужен <span style="font-weight: 800; color: #FF9B27;">ВНЖ Испании</span> или <span style="font-weight: 800; color: #FF9B27;">ОАЭ</span> под ключ</h1>
         <p style="margin: 22px 0 0; font-size: clamp(16px, 3vw, 19px); line-height: 1.6; max-width: 620px;">Поможем определить, какой способ получения ВНЖ подходит именно в вашей ситуации, и возьмём на себя работу с документами: от первичного анализа до подготовки, перевода, апостиля и подачи.</p>
@@ -129,7 +130,7 @@
 
   <!-- Что делаем -->
   <section id="services" style="background: #ffffff; position: relative; overflow: visible;">
-    <img src="images/services-doc.png" alt="Оформление документов для ВНЖ" style="position: absolute; right: 162px; top: -30px; width: 320px; height: 320px; opacity: 0.35; transform: rotate(-12deg); z-index: 1; pointer-events: none">
+    <img src="uploads/pasted-1784663316847-0.png" alt="Оформление документов для ВНЖ" style="position: absolute; right: 162px; top: -30px; width: 320px; height: 320px; opacity: 0.35; transform: rotate(-12deg); z-index: 1; pointer-events: none">
     <div style="position: relative; z-index: 2; max-width: 1180px; margin: 0 auto; padding: clamp(32px, 5vw, 56px) 20px;">
       <h2 style="margin: 0; font-size: clamp(28px, 4.5vw, 40px); font-weight: 800; color: #0f2e63;">Что <span style="font-weight: 800; color: #FF9B27">делаем</span></h2>
       <p style="margin: 16px 0 0; font-size: 18px; line-height: 1.6; max-width: 620px;">Мы не про «просто подать документы и ждать». Vivara — это бутиковое сопровождение с понятным планом действий на каждом этапе.</p>
@@ -153,7 +154,7 @@
         <div style="background: #ffffff; border-radius: 20px; padding: 36px 34px; box-shadow: 0 10px 30px rgba(0,70,170,0.06); display: flex; flex-direction: column; gap: 18px; position: relative; overflow: visible;">
           <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
             <div style="font-size: 26px; font-weight: 800; color: #0f2e63; line-height: 1.3;">Digital Nomad Visa</div>
-            <img src="images/spain-flag.png" alt="ВНЖ Испании" class="vv-spain-flag" style="width: 44px; height: 32px; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(15,46,99,0.18));">
+            <img src="uploads/pasted-1784661535107-0.png" alt="ВНЖ Испании" class="vv-spain-flag" style="width: 44px; height: 32px; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(15,46,99,0.18));">
           </div>
           <div style="font-size: 16px; color: #5a6474;">От заявки до ВНЖ ≈ 3 недели</div>
           <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
@@ -171,7 +172,7 @@
           <div style="background: #ffffff; border-radius: 20px; padding: 36px 34px; box-shadow: 0 10px 30px rgba(0,70,170,0.06); display: flex; flex-direction: column; gap: 18px; position: relative; overflow: visible;">
             <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
               <div style="font-size: 26px; font-weight: 800; color: #0f2e63; line-height: 1.3;">Emirates ID</div>
-              <img src="images/uae-flag.png" alt="Резидентство ОАЭ" class="vv-uae-flag" style="width: 44px; height: 32px; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(15,46,99,0.18));">
+              <img src="uploads/pasted-1784661687578-0.png" alt="Резидентство ОАЭ" class="vv-uae-flag" style="width: 44px; height: 32px; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(15,46,99,0.18));">
             </div>
             <div style="font-size: 16px; color: #5a6474;">От заявки до резидентства ≈ 2–3 недели</div>
             <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
@@ -195,7 +196,7 @@
     <div style="position: relative; z-index: 2; max-width: 1180px; margin: 0 auto; padding: clamp(32px, 5vw, 56px) 20px;">
       <div style="max-width: 720px; margin: 0 auto; text-align: center;">
         <div style="display: flex; align-items: center; justify-content: center; gap: -6px; flex-wrap: wrap;">
-          <img src="images/seal.png" alt="Печать Vivara" style="width: 116px; height: auto; flex-shrink: 0; margin-right: -26px">
+          <img src="uploads/изображение-removebg-preview-c283b4f8.png" alt="Печать Vivara" style="width: 116px; height: auto; flex-shrink: 0; margin-right: -26px">
           <h2 style="margin: 0; font-size: clamp(28px, 4.5vw, 40px); font-weight: 800; color: #0f2e63; line-height: 1.25;">Почему к нам <span style="font-weight: 800; color: #FF9B27;">обращаются</span></h2>
         </div>
         <p style="margin: 18px 0 0; font-size: 17px; line-height: 1.65;">Для тех, кому важны конфиденциальность, понятный процесс и отсутствие бюрократического хаоса.</p>
@@ -250,7 +251,7 @@
       <h2 style="margin: 0; font-size: clamp(26px, 4.5vw, 36px); font-weight: 800; color: #ffffff;">Первый шаг — разбор вашей ситуации</h2>
       <div style="margin-top: 28px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
         <a href="https://t.me/vivaracompany" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; height: 62px; padding: 0 34px; border-radius: 12px; border: 2px solid rgba(255,255,255,0.5); color: #ffffff; font-size: 19px; font-weight: 700;" style-hover="border-color: #ffffff; color: #ffffff;"><img src="tg.png" alt="" style="width: 26px; height: 26px; border-radius: 50%;">Telegram</a>
-        <a href="https://www.instagram.com/thevivara.company/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; height: 62px; padding: 0 34px; border-radius: 12px; border: 2px solid rgba(255,255,255,0.5); color: #ffffff; font-size: 19px; font-weight: 700;" style-hover="border-color: #ffffff; color: #ffffff;"><img src="instagram.png" alt="" style="width: 26px; height: 26px; border-radius: 7px;">Instagram</a>
+        <a href="https://www.instagram.com/thevivara.company/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; height: 62px; padding: 0 34px; border-radius: 12px; border: 2px solid rgba(255,255,255,0.5); color: #ffffff; font-size: 19px; font-weight: 700;" style-hover="border-color: #ffffff; color: #ffffff;"><img src="pasted-1784734268674-0.png" alt="" style="width: 26px; height: 26px; border-radius: 7px;">Instagram</a>
       </div>
     </div>
   </section>
@@ -419,6 +420,7 @@ class Component extends DCLogic {
       audience: [
         'Предпринимателям, которым нужен основной или запасной маршрут для переезда',
         'Тем, кто планирует легально жить в Испании или ОАЭ',
+        'Фрилансерам и удалённым сотрудникам, которым подходит ВНЖ цифрового кочевника в Испании',
         'Специалистам, планирующим жить и работать в ОАЭ',
         'Клиентам, которым важны конфиденциальность и персональное сопровождение',
         'Тем, кто не хочет самостоятельно разбираться в документах и нюансах оформления',
