@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Борис</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    height: 100%;
+    background:
+      radial-gradient(circle at 50% 0%, #4a0000 0%, #000000 60%);
+    font-family: 'Arial Black', 'Segoe UI', Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+  }
+  .wrap {
+    text-align: center;
+    padding: 24px;
+    max-width: 700px;
+  }
+  h1 {
+    color: #ff2b2b;
+    font-size: clamp(30px, 9vw, 64px);
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow:
+      0 0 10px rgba(255,0,0,0.9),
+      0 0 30px rgba(255,0,0,0.7),
+      0 0 60px rgba(255,0,0,0.5);
+    margin: 0 0 12px;
+    animation: shake 2.5s ease-in-out infinite;
+  }
+  .sub {
+    color: #ff9a9a;
+    font-size: clamp(14px, 4vw, 20px);
+    font-weight: 700;
+    margin: 0 0 44px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .tg-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 30px;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #ff3b3b 0%, #a10000 100%);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: clamp(16px, 5vw, 22px);
+    font-weight: 900;
+    text-transform: uppercase;
+    border: 2px solid #ff0000;
+    box-shadow: 0 0 25px 8px rgba(255,0,0,0.75);
+    animation: glow 1.2s ease-in-out infinite alternate;
+    max-width: 100%;
+    word-break: break-word;
+  }
+  .tg-btn img {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.95));
+    animation: pulse 1.2s ease-in-out infinite alternate;
+  }
+  @keyframes glow {
+    from { box-shadow: 0 0 15px 4px rgba(255,0,0,0.6); }
+    to   { box-shadow: 0 0 45px 16px rgba(255,0,0,1); }
+  }
+  @keyframes pulse {
+    from { transform: scale(1); }
+    to   { transform: scale(1.2); }
+  }
+  @keyframes shake {
+    0%, 92%, 100% { transform: translateX(0) rotate(0); }
+    93% { transform: translateX(-4px) rotate(-1deg); }
+    94% { transform: translateX(4px) rotate(1deg); }
+    95% { transform: translateX(-4px) rotate(-1deg); }
+    96% { transform: translateX(4px) rotate(1deg); }
+    97% { transform: translateX(-2px) rotate(0); }
+  }
+
+  @media (max-width: 480px) {
+    .wrap { padding: 16px; }
+    .tg-btn { padding: 16px 22px; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>БОРИС, ПЕРЕВЕДИТЕ ДЕНЬГИ ЗА САЙТ</h1>
+    <div class="sub">Хватит тянуть время</div>
+    <a href="https://t.me/eth_ent" class="tg-btn" target="_blank" rel="noopener">
+      <img src="tg.png" alt="Telegram">
+      Написать в Telegram
+    </a>
+  </div>
+</body>
+</html>
