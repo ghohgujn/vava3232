@@ -207,7 +207,7 @@
     <div style="position: relative; z-index: 2; max-width: 1180px; margin: 0 auto; padding: clamp(32px, 5vw, 56px) 20px;">
       <div style="max-width: 720px; margin: 0 auto; text-align: center;">
         <div style="display: flex; align-items: center; justify-content: center; gap: -6px; flex-wrap: wrap;">
-          <img src="images/seal.png" alt="Печать Vivara" style="width: 116px; height: auto; flex-shrink: 0; margin-right: -26px">
+          <img src="uploads/изображение-removebg-preview-c283b4f8.png" alt="Печать Vivara" style="width: 116px; height: auto; flex-shrink: 0; margin-right: -26px">
           <h2 style="margin: 0; font-size: clamp(28px, 4.5vw, 40px); font-weight: 800; color: #0f2e63; line-height: 1.25;">Почему к нам <span style="font-weight: 800; color: #FF9B27;">обращаются</span></h2>
         </div>
         <p style="margin: 18px 0 0; font-size: 17px; line-height: 1.65;">Для тех, кому важны конфиденциальность, понятный процесс и отсутствие бюрократического хаоса.</p>
@@ -220,6 +220,41 @@
             <div style="margin-top: 8px; font-size: 15px; line-height: 1.6; color: #5a6474;">{{ r.text }}</div>
           </div>
         </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- Одобрения -->
+  <section id="approvals" style="background: #ffffff; position: relative; overflow: hidden;">
+    <div style="max-width: 1180px; margin: 0 auto; padding: clamp(32px, 5vw, 56px) 20px 0;">
+      <div style="text-align: center; max-width: 680px; margin: 0 auto;">
+        <h2 style="margin: 0; font-size: clamp(28px, 4.5vw, 40px); font-weight: 800; color: #0f2e63;">Мы не говорим о шансах — <span style="font-weight: 800; color: #FF9B27;">мы гарантируем результат</span></h2>
+        <p style="margin: 14px 0 0; font-size: 16px; color: #5a6474; line-height: 1.6;">Наша главная гарантия — 99% одобрений ВНЖ для наших клиентов. Вот реальные решения миграционной службы Испании по нашим кейсам.</p>
+      </div>
+    </div>
+
+    <div ref="{{ setTrackWrapRef }}" style="margin-top: 40px; overflow: hidden; cursor: grab; -webkit-user-select: none; user-select: none; -webkit-mask-image: linear-gradient(90deg, transparent, #000 64px, #000 calc(100% - 64px), transparent); mask-image: linear-gradient(90deg, transparent, #000 64px, #000 calc(100% - 64px), transparent);"
+      onMouseDown="{{ onDragStart }}" onMouseMove="{{ onDragMove }}" onMouseUp="{{ onDragEnd }}" onMouseLeave="{{ onDragEnd }}"
+      onTouchStart="{{ onDragStart }}" onTouchMove="{{ onDragMove }}" onTouchEnd="{{ onDragEnd }}"
+      onMouseEnter="{{ onCarouselHover }}">
+      <div style="display: flex; width: max-content; transform: {{ trackTransform }}; transition: {{ trackTransition }};">
+        <sc-for list="{{ approvals }}" as="item" hint-placeholder-count="20">
+          <div style="flex: 0 0 auto; width: 240px; padding: 0 12px;">
+            <div style="display: flex; flex-direction: column; gap: 12px; background: #f4f8ff; border-radius: 18px; padding: 18px; height: 100%; box-sizing: border-box;">
+              <img src="{{ item.src }}" alt="{{ item.alt }}" draggable="false" style="width: 100%; height: 300px; object-fit: cover; object-position: top; border-radius: 10px; box-shadow: 0 14px 34px rgba(15,46,99,0.16); border: 1px solid #e3ecfb; pointer-events: none;">
+              <div style="text-align: center;">
+                <div style="font-size: 14px; font-weight: 800; color: #0f2e63;">{{ item.title }}</div>
+                <div style="margin-top: 2px; font-size: 12px; color: #5a6474;">{{ item.subtitle }}</div>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="max-width: 1180px; margin: 0 auto; padding: 0 20px;">
+      <div style="text-align: center; margin-top: 34px;">
+        <a href="https://drive.google.com/drive/folders/1v1ziP0L6vCcTuvsOXFwUQp-HsEz6Ufpf" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; height: 56px; padding: 0 30px; border-radius: 12px; background: linear-gradient(180deg, #4d90f5 0%, #2e7ce9 60%, #2268cc 100%); color: #ffffff; font-size: 16px; font-weight: 700;" style-hover="filter: brightness(0.96); color: #ffffff;">Все результаты в открытом доступе →</a>
       </div>
     </div>
   </section>
@@ -344,9 +379,83 @@ class Component extends DCLogic {
     captchaInput: '',
     consent: false,
     formError: '',
+    approvalOffset: 0,
   };
 
+  APPROVALS_BASE = [
+    { src: 'approval-1.jpg', alt: 'Решение об одобрении ВНЖ эмпрендедора Испании', title: 'Autorización de residencia — emprendedor', subtitle: 'Одобрено Дирекцией по миграции' },
+    { src: 'approval-2.jpg', alt: 'Решение об одобрении ВНЖ для члена семьи', title: 'Autorización de residencia — familiar', subtitle: 'Одобрено Дирекцией по миграции' },
+    { src: 'approval-3.jpg', alt: 'Решение об одобрении ВНЖ для члена семьи', title: 'Autorización de residencia — familiar', subtitle: 'Одобрено Дирекцией по миграции' },
+    { src: 'approval-4.jpg', alt: 'Решение об одобрении ВНЖ эмпрендедора Испании', title: 'Autorización de residencia — emprendedor', subtitle: 'Одобрено Дирекцией по миграции' },
+    { src: 'approval-5.jpg', alt: 'Решение об одобрении ВНЖ для члена семьи', title: 'Autorización de residencia — familiar', subtitle: 'Одобрено Дирекцией по миграции' },
+    { src: 'approval-6.jpg', alt: 'Решение об одобрении ВНЖ для тelerabajador международного профиля', title: 'Autorización de residencia — teletrabajador', subtitle: 'Одобрено Дирекцией по миграции' },
+    { src: 'approval-7.jpg', alt: 'Решение об одобрении ВНЖ эмпрендедора Испании', title: 'Autorización de residencia — emprendedor', subtitle: 'Одобрено Дирекцией по миграции' },
+    { src: 'approval-8.jpg', alt: 'Решение об одобрении ВНЖ для члена семьи', title: 'Autorización de residencia — familiar', subtitle: 'Одобрено Дирекцией по миграции' },
+    { src: 'approval-9.jpg', alt: 'Решение об одобрении ВНЖ для тelerabajador международного профиля', title: 'Autorización de residencia — teletrabajador', subtitle: 'Одобрено Дирекцией по миграции' },
+    { src: 'approval-10.jpg', alt: 'Решение об одобрении ВНЖ для члена семьи', title: 'Autorización de residencia — familiar', subtitle: 'Одобрено Дирекцией по миграции' },
+    { src: 'approval-11.jpg', alt: 'Решение об одобрении ВНЖ эмпрендедора Испании', title: 'Autorización de residencia — emprendedor', subtitle: 'Одобрено Дирекцией по миграции' },
+    { src: 'approval-12.jpg', alt: 'Решение об одобрении ВНЖ эмпрендедора Испании', title: 'Autorización de residencia — emprendedor', subtitle: 'Одобрено Дирекцией по миграции' },
+  ];
+  CARD_W = 264; // card width + horizontal padding (240 + 12*2)
+
+  setTrackWrapRef = (el) => {
+    this.trackWrapEl = el;
+    if (el) this.baseSetWidth = this.APPROVALS_BASE.length * this.CARD_W;
+  };
+
+  componentDidMount_approvals = () => {
+    this._approvalsRaf = null;
+    this._autoplaySpeed = 0.4; // px per frame, gentle
+    this._drag = { active: false, startX: 0, startOffset: 0, moved: 0 };
+    const tick = () => {
+      if (!this._drag.active && !(this._pauseUntil && Date.now() < this._pauseUntil)) {
+        this.setState(s => {
+          const setW = this.APPROVALS_BASE.length * this.CARD_W;
+          let next = s.approvalOffset + this._autoplaySpeed;
+          if (next >= setW) next -= setW;
+          return { approvalOffset: next };
+        });
+      }
+      this._approvalsRaf = requestAnimationFrame(tick);
+    };
+    this._approvalsRaf = requestAnimationFrame(tick);
+  };
+
+  componentWillUnmount_approvals = () => {
+    if (this._approvalsRaf) cancelAnimationFrame(this._approvalsRaf);
+  };
+
+  getClientX = (e) => (e.touches && e.touches.length ? e.touches[0].clientX : e.clientX);
+
+  onDragStart = (e) => {
+    this._drag.active = true;
+    this._drag.startX = this.getClientX(e);
+    this._drag.startOffset = this.state.approvalOffset;
+    this._drag.moved = 0;
+    this._pauseUntil = Infinity;
+    if (this.trackWrapEl) this.trackWrapEl.style.cursor = 'grabbing';
+  };
+
+  onDragMove = (e) => {
+    if (!this._drag.active) return;
+    const dx = this.getClientX(e) - this._drag.startX;
+    this._drag.moved = dx;
+    const setW = this.APPROVALS_BASE.length * this.CARD_W;
+    let next = this._drag.startOffset - dx;
+    next = ((next % setW) + setW) % setW;
+    this.setState({ approvalOffset: next });
+  };
+
+  onDragEnd = () => {
+    this._drag.active = false;
+    this._pauseUntil = Date.now() + 1800;
+    if (this.trackWrapEl) this.trackWrapEl.style.cursor = 'grab';
+  };
+
+  onCarouselHover = () => { this._pauseUntil = Date.now() + 600; };
+
   componentDidMount() {
+    this.componentDidMount_approvals();
     if (window.location.hash === '#openModal') this.openModal();
     this._onDocClick = (e) => {
       if (this.state.infoMenuOpen && this.infoRef && !this.infoRef.contains(e.target)) this.closeInfoMenu();
@@ -355,6 +464,7 @@ class Component extends DCLogic {
   }
 
   componentWillUnmount() {
+    this.componentWillUnmount_approvals();
     document.removeEventListener('click', this._onDocClick, true);
   }
 
@@ -412,6 +522,14 @@ class Component extends DCLogic {
       tilt,
       tiltAlt: -tilt,
       showUae: this.props.showUae ?? true,
+      setTrackWrapRef: this.setTrackWrapRef,
+      onDragStart: this.onDragStart,
+      onDragMove: this.onDragMove,
+      onDragEnd: this.onDragEnd,
+      onCarouselHover: this.onCarouselHover,
+      trackTransform: 'translateX(-' + this.state.approvalOffset + 'px)',
+      trackTransition: this._drag && this._drag.active ? 'none' : 'transform 0.05s linear',
+      approvals: [...this.APPROVALS_BASE, ...this.APPROVALS_BASE, ...this.APPROVALS_BASE],
       services: [
         { n: '01', title: 'Подбираем основание', text: 'Определяем, какой способ получения ВНЖ подходит именно в вашей ситуации.' },
         { n: '02', title: 'Анализируем риски', text: 'Честно оцениваем вашу ситуацию и возможные риски до начала процесса.' },
